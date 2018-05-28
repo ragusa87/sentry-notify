@@ -4,8 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle",
-            "Sentry\\SentryBundle\\": "src/SentryBundle"
+            "AppBundle\\": "src/AppBundle"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -32,7 +31,7 @@
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "^2.8.0|^3.0.0.",
         "twig/twig": "^1.0|^2.0",
-        "sentry/sentry-symfony": "^1.0|^2.0"
+        "sentry/sentry-symfony": "dev-fix/install"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
