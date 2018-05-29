@@ -26,8 +26,7 @@ class DefaultForm extends AbstractType
     {
         $builder->add("level", ChoiceType::class, ["choices" => $this->getChoices()])
             ->add("message", TextareaType::class, ["required" => false])
-            ->add("submit", SubmitType::class, ["label" => "Submit"])
-            ->add("thrower", SubmitType::class, ["label" => "Throw exception"]);
+            ->add("submit", SubmitType::class, ["label" => "Submit"]);
     }
 
     /**

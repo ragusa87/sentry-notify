@@ -1,13 +1,149 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <style>
+            body {
+                background: #F5F5F5;
+                font: 18px/1.5 sans-serif;
+            }
+
+            h1, h2 {
+                line-height: 1.2;
+                margin: 0 0 .5em;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 21px;
+                margin-bottom: 1em;
+            }
+
+            p {
+                margin: 0 0 1em 0;
+            }
+
+            a, a:hover {
+                text-decoration: none;
+            }
+
+            code {
+                background: #F5F5F5;
+                max-width: 100px;
+                padding: 2px 6px;
+                word-wrap: break-word;
+            }
+
+            #wrapper {
+                background: #FFF;
+                margin: 1em auto;
+                max-width: 800px;
+                width: 95%;
+            }
+
+            #container {
+                padding: 2em;
+            }
+
+            #welcome, #status {
+                margin-bottom: 2em;
+            }
+
+            #welcome h1 span {
+                display: block;
+                font-size: 75%;
+            }
+
+            #icon-status {
+                float: left;
+                height: 64px;
+                margin-right: 1em;
+                margin-top: -4px;
+                width: 64px;
+            }
+
+            form [type=submit], [class^=btn-] {
+                background-color: #759E1A;
+                border: none;
+                border-radius: 5px;
+                margin: 5px;
+                padding: 10px;
+                margin-left: 200px;
+                font-size: 13px;
+            }
+
+            label {
+                display: inline-block;
+                min-width: 200px;
+            }
+
+            @media (min-width: 768px) {
+                #wrapper {
+                    width: 80%;
+                    margin: 2em auto;
+                }
+
+                @-webkit-keyframes fade-in {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+                @keyframes fade-in {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+                .sf-toolbar {
+                    opacity: 0;
+                    -webkit-animation: fade-in 1s .2s forwards;
+                    animation: fade-in 1s .2s forwards;
+                }
+            }
+
+            ul.nav {
+                list-style: none;
+                margin: 0; padding: 0;
+            }
+            ul.nav::after{
+                width: 100%;
+                display: block;
+                content: " ";
+                border-bottom: 1px solid #c0c0c0;
+                margin-bottom: 20px;
+            }
+            ul.nav li {
+                display: inline;
+                margin: 0;
+            }
+        </style>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div id="wrapper">
+    <div id="container">
+        <ul class="nav">
+            <li><a href="{{ path("homepage") }}">Home</a></li>
+            <li><a href="{{ path("app_default_deprecated") }}">Deprecated</a></li>
+            <li><a href="{{ path("app_default_memoryexception") }}">OutOfMemory</a></li>
+            <li><a href="{{ path("app_default_exception") }}">RuntimeException</a>
+            </li>
+        </ul>
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

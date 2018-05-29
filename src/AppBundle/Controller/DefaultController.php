@@ -22,10 +22,6 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $message = $form->get("message")->getData();
-
-            if ($form->get("thrower")->isClicked()) {
-                throw new \RuntimeException("Throwed exception !\n".$message);
-            }
             $logger->log($form->get("level")->getData(), $message);
         }
 
@@ -42,4 +38,30 @@ class DefaultController extends Controller
 
         return $this->render('default/deprecated.html.twig');
     }
+
+    /**
+     * @Route("/memory")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function memoryExceptionAction()
+    {
+        $concat = str_repeat("asdf", 10000);
+        $str = $concat;
+        do {
+            $str .= $concat;
+        } while (true);
+
+        // Crash before rendering
+        return $this->render('default/deprecated.html.twig');
+
+    }
+
+    /**
+     * @Route("/exception")
+     */
+    public function exceptionAction()
+    {
+        throw new \RuntimeException("Throwed exception !");
+    }
 }
+
