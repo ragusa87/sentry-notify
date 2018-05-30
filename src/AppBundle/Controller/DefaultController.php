@@ -15,7 +15,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $logger = $this->get("logger");
+        $logger = $this->get("default_logger");
 
         $form = $this->createForm(DefaultForm::class);
         $form->handleRequest($request);
