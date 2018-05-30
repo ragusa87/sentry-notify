@@ -25,11 +25,6 @@ monolog:
             channels: ['!event', '!doctrine', '!console']
             level: debug
 
-        sentry:
-            type: raven
-            dsn: "%sentry_dsn%"
-            channels: ['default', "app"]
-#
         # To follow logs in real time, execute the following command:
         # `bin/console server:log -vv`
         #server_log:
@@ -47,7 +42,3 @@ monolog:
 
 swiftmailer:
     disable_delivery: true
-
-
-sentry:
-    dsn: "%sentry_dsn%"

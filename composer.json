@@ -31,7 +31,7 @@
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "^2.8.0|^3.0.0.",
         "twig/twig": "^1.0|^2.0",
-        "sentry/sentry-symfony": "dev-fix/install"
+        "sentry/sentry-symfony": "dev-feature/remove-install"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

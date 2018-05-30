@@ -17,6 +17,9 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            // Load the bundle in all env, to reproduce
+            // - https://github.com/getsentry/sentry-symfony/issues/120
+            // - https://github.com/getsentry/sentry-symfony/issues/63
             new Sentry\SentryBundle\SentryBundle(),
         ];
 
@@ -27,7 +30,7 @@ class AppKernel extends Kernel
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-                // Load SF3 bundle ony on symfony (so you can upgrade & downgarde your symfony version to test.
+                // Load SF3 bundle ony on symfony (so you can upgrade & downgrade your symfony version to test.
                 if (Kernel::MAJOR_VERSION > 2 && class_exists("Symfony\Bundle\WebServerBundle\WebServerBundle")) {
                     $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
                 }

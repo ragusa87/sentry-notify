@@ -29,15 +29,35 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/deprecated");
+     * @Route("/error/{type}",requirements={"type":"deprecated|error|notice|warning"}, defaults={"deprecated"});
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deprecatedAction()
+    public function errorAction($type)
     {
-        @trigger_error("Test deprecated warning 1 ", E_USER_DEPRECATED);
+        switch ($type) {
+            default:
+            case "deprecated":
+                $e = E_USER_DEPRECATED;
+                break;
+            case "error":
+                $e = E_USER_ERROR;
+                break;
+            case "notice":
+                $e = E_USER_NOTICE;
+                break;
+            case "warning":
+                $e = E_USER_WARNING;
+                break;
 
-        return $this->render('default/deprecated.html.twig');
+        }
+        @trigger_error("Test $type", $e);
+
+        return $this->render(
+            'default/message.html.twig',
+            ["message" => sprintf('Can you see a "%s" message in the debug toolbar ? And in sentry ?',$type)]
+        );
     }
+
 
     /**
      * @Route("/memory")
